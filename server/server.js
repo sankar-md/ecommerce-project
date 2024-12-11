@@ -9,7 +9,7 @@ mongoose
     "mongodb+srv://sankarsmd100:mongodb-ecommerce@cluster0.jyswh.mongodb.net/"
   )
   .then(() => console.log("MongoDB Connected!"))
-  .catch((error) => console.log(error));
+  .catch((error) => console.log("error"));
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,4 +33,4 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
 
-app.listen(PORT, () => console.log(`Server is now running on port $(PORT)`));
+app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));

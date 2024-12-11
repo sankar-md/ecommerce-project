@@ -1,4 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { checkAuth } from "./store/auth-slice";
 
 import AuthLayout from "./components/auth/layout";
 import AdminLayout from "./components/admin-view/layout";
@@ -19,8 +22,18 @@ import NotFound from "./pages/not-found";
 import UnauthPage from "./pages/unauth-page";
 
 function App() {
-  const isAuthenticated = false;
-  const user = null;
+  const { user, isAuthenticated, isLoading } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
