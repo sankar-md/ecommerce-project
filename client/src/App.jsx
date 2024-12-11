@@ -7,6 +7,7 @@ import AuthLayout from "./components/auth/layout";
 import AdminLayout from "./components/admin-view/layout";
 import ShoppingLayout from "./components/shopping-view/layout";
 import CheckAuth from "./components/common/check-auth";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
@@ -32,7 +33,7 @@ function App() {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Skeleton className="w-screen h-screen bg-black" />;
   }
   return (
     <div className="flex flex-col overflow-hidden bg-white">
